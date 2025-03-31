@@ -10,19 +10,19 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                sh '/usr/local/bin/npm install'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'npm test'
+                sh '/usr/local/bin/npm test'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh '/usr/bin/local/pm2 start server.js'  // Ou autre commande de déploiement
+                sh '/usr/bin/local/node server.js'  // Ou autre commande de déploiement
             }
         }
     }
