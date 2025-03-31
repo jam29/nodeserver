@@ -19,13 +19,20 @@ pipeline {
                 script {
                     // Installer les dépendances via npm
                     sh 'npm install'
+ 		    sh 'npm install -g pm2'
                 }
             }
         }
-        
+       
+	stage('Verify PM2 process') {
+            steps {
+                sh 'pm2 list'
+            }
+        }
+
         stage('Deploy') {
             steps {
-                sh 'nohup npm start server'  
+                sh 'pm2 start server'  
             }
         }
     }
