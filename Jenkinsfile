@@ -32,7 +32,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'pm2 start server'  
+                sh 'pm2 start server.js'  
             }
         }
     }
