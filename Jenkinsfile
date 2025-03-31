@@ -20,10 +20,10 @@ pipeline {
                 }
             }
         }
-        // Autres étapes...
+        
         stage('Deploy') {
             steps {
-                nodejs server.js'  // Ou autre commande de déploiement
+                nodejs server.js  
             }
         }
     }
