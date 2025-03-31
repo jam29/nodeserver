@@ -25,7 +25,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                sh 'npm start server.js'  
+                sh 'pm2 start server.js'  
             }
         }
     }
