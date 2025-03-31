@@ -1,28 +1,32 @@
+    }
+}
+
 pipeline {
     agent any
-
-    environment {
-        NODEJS_HOME = '/usr/local/bin/node'  // Ajustez si nécessaire
-        PATH = "${NODEJS_HOME}:${env.PATH}"
+    tools {
+        nodejs 'nodejs' // Utilisation de Node.js configuré dans Jenkins
     }
-
     stages {
-
+        stage('Check NPM Version') {
+            steps {
+                script {
+                    // Vérifier la version de npm avec l'environnement nodejs
+                    sh 'npm version'
+                }
+            }
+        }
         stage('Install Dependencies') {
             steps {
-                sh '/usr/local/bin/npm install'
+                script {
+                    // Installer les dépendances via npm
+                    sh 'npm install'
+                }
             }
         }
-
-        stage('Test') {
-            steps {
-                sh '/usr/local/bin/npm test'
-            }
-        }
-
+        // Autres étapes...
         stage('Deploy') {
             steps {
-                sh '/usr/bin/local/node server.js'  // Ou autre commande de déploiement
+                nodejs server.js'  // Ou autre commande de déploiement
             }
         }
     }
