@@ -3,6 +3,7 @@ pipeline {
     tools {
         nodejs 'nodejs' // Utilisation de Node.js configuré dans Jenkins
     }
+
     stages {
         stage('Check NPM Version') {
             steps {
@@ -12,6 +13,7 @@ pipeline {
                 }
             }
         }
+
         stage('Install Dependencies') {
             steps {
                 script {
@@ -23,7 +25,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                nodejs server.js  
+                sh 'npm start server.js'  
             }
         }
     }
